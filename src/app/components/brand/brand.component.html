@@ -1,0 +1,10 @@
+<ul class="list-group">
+    <h5>Marka</h5>
+    <li  (click)="CurrentBrandClassDefault()" [class]="getAllColorClass()">Tüm Markalar</li>
+    <li 
+    (click)="setCurrentBrand(brand)"
+    routerLink="/cars/brand/{{brand.id}}"
+    [class]="getCurrnetBrandClass(brand)" 
+    *ngFor="let brand of brands"
+    >{{brand.name}}</li>
+</ul>

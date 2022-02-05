@@ -1,0 +1,11 @@
+<div *ngFor="let car of cars" style="padding-top: 30px;">
+
+<div  class="card">
+    
+    <div class="card-body">
+      <h5 class="card-title">{{car.colorName}} {{car.name}}</h5>
+      <p class="card-text">{{car.descriptions}}</p>
+      <a routerLink="/cars/carImage/{{car.id}}" href="#" class="btn btn-primary">{{car.dailyPrice}} TL'ye kirala</a>
+    </div>
+  </div>
+</div>
