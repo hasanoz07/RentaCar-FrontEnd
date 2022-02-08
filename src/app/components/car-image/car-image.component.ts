@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { CarImageService } from './../../services/car-image.service';
 import { CarImage } from './../../models/carImage';
 import { Component, Input, OnInit } from '@angular/core';
+import { TrustworthyCar } from 'src/app/models/trustworthyCar';
+
 
 
 @Component({
@@ -14,56 +16,50 @@ import { Component, Input, OnInit } from '@angular/core';
 export class CarImageComponent implements OnInit {
 
   carImages: CarImage[] = []
-  car!:Car;
-  cars:Car[]=[]
+  car!: Car;
+  cars: Car[] = []
+  succes!:boolean
+  imagesPath:string[]=[]
 
   constructor(
     private carImageService: CarImageService,
-    private carService:CarService,
+    private carService: CarService,
     private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
 
-    this.activatedRoute.params.subscribe(params=>{
-      if(params["carId"]){
+    this.activatedRoute.params.subscribe(params => {
+      if (params["carId"]) {
         this.getCarImageById(params["carId"])
-        this.getCarById(params["carId"]).then((res)=>{
-          this.car={
-          brandName:"toyo",
-          colorName:"Siyah",
-          dailyPrice:180,
-          descriptions:"deneme",
-          id:4,
-          modelYear:2012,
-          name:"toyota corololla"
-        }
-        })
+        this.getCarDetailsById(params["carId"])
       }
     })
-      console.log(this.car.brandName)
   }
   getAllCarImages() {
     this.carImageService.getCarImage().subscribe(response => {
       this.carImages = response.data
     })
   }
-   getCarImageById(carId: number) {
+  getCarImageById(carId: number) {
+
     this.carImageService.getCarImageById(carId).subscribe(response => {
       this.carImages = response.data
+      console.log(this.carImages[0])
+
     })
   }
-
-  getCarById(carId:number){
-    return new Promise<void>((resolve) => {
-    this.carService.getCarById(carId).subscribe(response=>{
-    this.cars=response.data    
+  getCarDetailsById(carId: number) {
+    this.carService.getCarDetailsById(carId).subscribe(response => {
+      this.car = response.data;
+      console.log(this.car.name);
     
-    resolve();
     });
-  })
+  }
+
+  
 }
-}
+
 
 // this.car.id=response.id
 //       this.car.brandName=response.brandName

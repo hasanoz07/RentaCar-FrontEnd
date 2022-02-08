@@ -47,18 +47,7 @@ car:Car={id:-1,brandName:"",colorName:"",dailyPrice:-1,descriptions:"",modelYear
       this.cars=response.data;
     })
   }
-  getCarById(carId:number){
-    this.carService.getCarById(carId).subscribe(response=>{
-    this.cars=response.data    
-    this.car.id=this.cars[0].id
-    this.car.brandName=this.cars[0].brandName
-    this.car.colorName=this.cars[0].colorName
-    this.car.dailyPrice=this.cars[0].dailyPrice
-    this.car.modelYear=this.cars[0].modelYear
-    this.car.name=this.cars[0].name
-    this.car.descriptions=this.cars[0].descriptions
-    })
-  }
+
 
   
 }

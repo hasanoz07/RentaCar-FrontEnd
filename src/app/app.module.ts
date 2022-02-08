@@ -10,8 +10,8 @@ import { CustomerComponent } from './components/customer/customer.component';
 import { CarComponent } from './components/car/car.component';
 import { RentalComponent } from './components/rental/rental.component';
 import { CarImageComponent } from './components/car-image/car-image.component';
-
-
+import { FooterComponent } from './components/footer/footer.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -24,13 +24,16 @@ import { CarImageComponent } from './components/car-image/car-image.component';
     CarComponent,
     RentalComponent,
     CarImageComponent,
+    FooterComponent,
 
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
