@@ -11,6 +11,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ColorComponent implements OnInit {
   colors: Color[] = []
+  filterColorText=""
   currnetColor: Color = { id: -1, name: "" }
   constructor(private colorService: ColorService) { }
 

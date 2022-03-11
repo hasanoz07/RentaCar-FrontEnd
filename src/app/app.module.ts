@@ -12,6 +12,12 @@ import { RentalComponent } from './components/rental/rental.component';
 import { CarImageComponent } from './components/car-image/car-image.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FilterBrandPipe } from './pipes/filter-brand.pipe';
+import { FormsModule } from '@angular/forms';
+import { FilterColorPipe } from './pipes/filter-color.pipe';
+import { FilterCarPipe } from './pipes/filter-car.pipe';
+import { BrandSelectoptionComponent } from './components/brand/brand-selectoption/brand-selectoption.component';
+import { ColorSelectoptionComponent } from './components/color/color-selectoption/color-selectoption.component';
 
 
 @NgModule({
@@ -25,6 +31,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     RentalComponent,
     CarImageComponent,
     FooterComponent,
+    FilterBrandPipe,
+    FilterColorPipe,
+    FilterCarPipe,
+    BrandSelectoptionComponent,
+    ColorSelectoptionComponent,
 
     
   ],
@@ -32,7 +43,8 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
     
   ],
   providers: [],

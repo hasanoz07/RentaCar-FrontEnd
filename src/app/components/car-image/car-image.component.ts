@@ -8,6 +8,7 @@ import { TrustworthyCar } from 'src/app/models/trustworthyCar';
 
 
 
+
 @Component({
   selector: 'app-car-image',
   templateUrl: './car-image.component.html',
@@ -24,7 +25,8 @@ export class CarImageComponent implements OnInit {
   constructor(
     private carImageService: CarImageService,
     private carService: CarService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    
   ) { }
 
   ngOnInit(): void {
@@ -57,15 +59,8 @@ export class CarImageComponent implements OnInit {
     });
   }
 
+
   
 }
 
-
-// this.car.id=response.id
-//       this.car.brandName=response.brandName
-//       this.car.colorName=response.colorName
-//       this.car.dailyPrice=response.dailyPrice
-//       this.car.modelYear=response.modelYear
-//       this.car.name=response.name
-//       this.car.descriptions=response.descriptions
 

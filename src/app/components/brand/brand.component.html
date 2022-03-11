@@ -1,10 +1,20 @@
+
+
+
 <ul class="list-group">
     <h5>Marka</h5>
+    <div style="margin-bottom: 15px; margin-top: 5px;" class="form-outline">
+        <input [(ngModel)]="filterBrandText" type="Aramak istediğiniz marka" id="form1" class="form-control" placeholder="İstediğiniz araç markası" aria-label="Search" />
+      </div>
     <li  (click)="CurrentBrandClassDefault()" [class]="getAllColorClass()">Tüm Markalar</li>
     <li 
     (click)="setCurrentBrand(brand)"
     routerLink="/cars/brand/{{brand.id}}"
     [class]="getCurrnetBrandClass(brand)" 
-    *ngFor="let brand of brands"
+    *ngFor="let brand of brands|filterBrand:filterBrandText"
     >{{brand.name}}</li>
 </ul>
+<div style="margin-top: 20px;" *ngIf="filterBrandText.length>0" class="alert-primary col-md-12">
+    {{filterBrandText}} ile ilgili ürünler listeliniyor
+  </div>
+

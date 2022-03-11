@@ -1,11 +1,10 @@
-import { CarImage } from './../../models/carImage';
-import { CarImageComponent } from './../car-image/car-image.component';
-
 import { CarService } from './../../services/car.service';
-
-import { Component, OnInit } from '@angular/core';
+import { Component,  OnInit, } from '@angular/core';
 import { Car } from 'src/app/models/carDetail';
 import { ActivatedRoute } from '@angular/router';
+import { Brand } from 'src/app/models/brand';
+import { Color } from 'src/app/models/color';
+
 
 @Component({
   selector: 'app-car',
@@ -13,10 +12,24 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./car.component.css']
 })
 export class CarComponent implements OnInit {
+
+
+  colors: Color[] = []
+
+
+  brands: Brand[]=[]
 cars:Car[]=[]
 car:Car={id:-1,brandName:"",colorName:"",dailyPrice:-1,descriptions:"",modelYear:-1,name:""}
+
+filterCarText=""
+
+  selectedColorId!: number;
+  selectedBrandId!: number;
+
+
   constructor(private carService:CarService,
     private activatedRoute:ActivatedRoute,
+    
     ) { }
 
   ngOnInit(): void {
@@ -47,6 +60,18 @@ car:Car={id:-1,brandName:"",colorName:"",dailyPrice:-1,descriptions:"",modelYear
       this.cars=response.data;
     })
   }
+
+  getBrandId(brandId:number|undefined){
+    this.selectedBrandId!=brandId;
+    console.log("İçeriden gelen değer(brand) : " + this.selectedBrandId);
+  }
+
+  getColorId(colorId:number|undefined){
+    this.selectedColorId!=colorId;
+    console.log("İçeriden gelen değer : " + this.selectedColorId);
+  }
+
+
 
 
   

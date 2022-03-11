@@ -1,0 +1,6 @@
+<div class="col-md-5">
+    <select #brandss class="form-select " aria-label="Default select example" (change)="selectedBrand(brandss.value)">
+      <option selected>İstediğiniz araç markası</option>
+      <option *ngFor="let brand of brands" [value]="brand.id" >{{brand.name}}</option>   
+    </select>
+  </div>

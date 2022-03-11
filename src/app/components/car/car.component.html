@@ -1,12 +1,32 @@
-<div *ngFor="let car of cars" style="padding-top: 30px;">
+<div style=" margin-top: 37px;" class="form-outline">
+  <input [(ngModel)]="filterCarText" type="Aramak istediğiniz marka" id="form1" class="form-control"
+    placeholder="İstediğiniz araç markası" aria-label="Search" />
+</div>
 
-  <div  class="card">
-      
-      <div class="card-body">
-        <h5 class="card-title">{{car.colorName}} {{car.name}}</h5>
-        <p class="card-text">{{car.descriptions}}</p>
-        <a routerLink="/cars/carImage/{{car.id}}" href="#" class="btn btn-primary">{{car.dailyPrice}} TL'ye kirala</a>
-      </div>
+<div class="row">
+  <div class="col-md-10">
+    <app-brand-selectoption (outputValue)="getBrandId($any($event))"></app-brand-selectoption>
+    <app-color-selectoption (outputValue)="getColorId($any($event))"></app-color-selectoption>
+  </div>
+  <div class="col-md-2 my-auto">
+    <button class="btn btn-primary" >Filter</button>
+  </div>
+</div>
+
+<div *ngFor="let car of cars|filterCar:filterCarText" style="padding-top: 30px;">
+
+  <div class="card">
+
+    <div class="card-body">
+      <h5 class="card-title">{{car.colorName}} {{car.name}}</h5>
+      <p class="card-text">{{car.descriptions}}</p>
+      <a routerLink="/cars/carImage/{{car.id}}" href="#" class="btn btn-primary"> {{ car.dailyPrice | currency: '₺'}}
+      </a>
+
     </div>
   </div>
+</div>
 
+<div style="margin-top: 20px;" *ngIf="filterCarText.length>0" class="alert-primary col-md-12">
+  {{filterCarText}} ile ilgili ürünler listeliniyor
+</div>

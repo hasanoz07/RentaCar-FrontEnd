@@ -1,0 +1,6 @@
+<div class="col-md-5">
+    <select #colorss class="form-select " aria-label="Default select example" (change)="selectedColor(colorss.value)">
+      <option selected>İstediğiniz araç rengi</option>
+      <option  *ngFor="let color of colors" [value]="color.id" >{{color.name}}</option>
+    </select>
+  </div>
